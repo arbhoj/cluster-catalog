@@ -1,4 +1,4 @@
-displayName: CAPVCD Cluster
+displayName: CAPVCD
 description: Deploy Kubernetes Clusters on vCD with the click of a button
 category:
   - capi
