@@ -34,4 +34,4 @@ metadata:
 spec:
   interval: 10m
   timeout: 1m
-  url: "https://10.39.0.136/chartrepo/dkp-helm"
+  url: "https://raw.githubusercontent.com/arbhoj/capvcd-helm/master/capi-charts"
