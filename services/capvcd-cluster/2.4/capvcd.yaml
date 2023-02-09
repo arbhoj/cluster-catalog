@@ -12,7 +12,7 @@ spec:
         kind: HelmRepositoriy
         name: dkp-capi-clusters
       version: 0.1.0 
-  interval: 15s  
+  interval: 2m  
   install:
     remediation:
       retries: 30
