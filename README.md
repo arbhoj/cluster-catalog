@@ -15,7 +15,7 @@ metadata:
 spec:
   interval: 1m0s
   ref:
-    branch: master
+    branch: main
   timeout: 20s
   url: https://github.com/arbhoj/cluster-catalog.git
 EOF
