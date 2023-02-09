@@ -5,7 +5,7 @@ category:
 type: catalog
 allowMultipleInstances: true
 scope:
-  - project
+  - workspace
 overview: |-
   ## Overview
   Deploy Kubernetes Clusters on vCD with the click of a button
