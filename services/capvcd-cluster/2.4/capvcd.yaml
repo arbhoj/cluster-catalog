@@ -9,7 +9,7 @@ spec:
     spec:
       chart: capvcdclusters
       sourceRef:
-        kind: HelmRepositoriy
+        kind: HelmRepository
         name: dkp-capi-clusters
       version: 0.1.0 
   interval: 2m  
