@@ -7,7 +7,7 @@ kubectl apply -f - <<EOF
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
 metadata:
-  name: demo-repo
+  name: dkp-capi
   namespace: ${NAMESPACE}
   labels:
     kommander.d2iq.io/gitapps-gitrepository-type: catalog
