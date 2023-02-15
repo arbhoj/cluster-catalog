@@ -11,6 +11,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: dkp-capi-clusters
+        namespace: kommander-flux
       version: 0.1.0 
   interval: 2m  
   install:
@@ -23,7 +24,7 @@ spec:
   releaseName: capvcdclusters
   valuesFrom:
     - kind: ConfigMap
-      name: capvcd-2.4-d2iq-defaults
+      name: capvcd-1.24.6-d2iq-defaults
   targetNamespace: ${releaseNamespace}
 ---
 apiVersion: source.toolkit.fluxcd.io/v1beta1
@@ -34,4 +35,6 @@ metadata:
 spec:
   interval: 10m
   timeout: 1m
+  secretRef:
+    name: tls-root-ca  
   url: "${helmMirrorURL:=https://raw.githubusercontent.com/arbhoj/capvcd-helm/master/capi-charts}"
