@@ -30,8 +30,8 @@ apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
 metadata:
   name: dkp-capi-clusters
-  namespace: ${releaseNamespace}
+  namespace: kommander-flux
 spec:
   interval: 10m
   timeout: 1m
-  url: "https://raw.githubusercontent.com/arbhoj/capvcd-helm/master/capi-charts"
+  url: "${helmMirrorURL:=https://raw.githubusercontent.com/arbhoj/capvcd-helm/master/capi-charts}"
