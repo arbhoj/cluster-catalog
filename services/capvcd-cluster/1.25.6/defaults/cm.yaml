@@ -1,0 +1,54 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: capvcd-1.25.6-d2iq-defaults
+  namespace: ${releaseNamespace}
+data:
+  values.yaml: |-
+    ---      
+    cluster:
+      name: null
+      cni: antrea
+      ccm: external
+      csi: external
+      kubernetesVersion: v1.25.6
+      lastKubernetesVersion: v1.24.6
+      lastvCDTemplate: dkp-2.4.0-airgapped-ubuntu-k8s-v1.24.6
+      catalog: dkp
+      vAppTemplate: dkp-2.4.0-airgapped-ubuntu-k8s-v1.25.6
+      kubernetes_pv_storageProfile: vSAN Default Storage Policy
+      cidr:
+        pod: 99.96.0.0/11
+        service: 99.64.0.0/13
+      isManagement: false
+      http_proxy:
+      https_proxy:
+      no_proxy:
+      refresh_token_b64: null
+      capv_credentials_secret: null
+      encryptionConfigValueB64: a2luZDogRW5jcnlwdGlvbkNvbmZpZwphcGlWZXJzaW9uOiB2MQpyZXNvdXJjZXM6CiAgLSByZXNvdXJjZXM6CiAgICAgIC0gc2VjcmV0cwogICAgICAtIGNvbmZpZ21hcHMKICAgIHByb3ZpZGVyczoKICAgICAgLSBhZXNjYmM6CiAgICAgICAgICBrZXlzOgogICAgICAgICAgICAtIG5hbWU6IGtleQogICAgICAgICAgICAgIHNlY3JldDogYW5BU2pDYk9JMFcxT3NJbHdpS1FKWHRHT2JQR0dkWHprMGpGYkNSRjNKbz0KICAgICAgLSBpZGVudGl0eToge30=
+      controlplane:
+        vip_interface: ens160
+        vip_ip: null
+        ssh_key:
+        replicas: 3
+      workerNodes:
+        replicas: 4
+        ssh_key:
+      k8s_svc_vip_range: null
+    vcd:
+      site: https://192.168.140.181
+      org: d2iq
+      org_vdc: Oscorp-Workload
+      org_vdc_network: Oscorp-Workload-Network
+    controlPlaneMachineTemplate:
+      sizingPolicy: dkp_control_standard
+      placementPolicy: null
+      storageProfile: vSAN Default Storage Policy
+      enableNvidiaGPU: false
+    workerNodesMachineTemplate:
+      sizingPolicy: dkp_worker_standard
+      placementPolicy: null
+      storageProfile: vSAN Default Storage Policy
+      enableNvidiaGPU: false

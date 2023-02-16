@@ -1,0 +1,40 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: capvcd-cluster
+  namespace: ${releaseNamespace}
+spec:
+  chart:
+    spec:
+      chart: capvcdclusters
+      sourceRef:
+        kind: HelmRepository
+        name: dkp-capi-clusters
+        namespace: kommander-flux
+      version: 0.1.0 
+  interval: 2m  
+  install:
+    remediation:
+      retries: 30
+    createNamespace: false
+  upgrade:
+    remediation:
+      retries: 30
+  releaseName: capvcdclusters
+  valuesFrom:
+    - kind: ConfigMap
+      name: capvcd-1.25.6-d2iq-defaults
+  targetNamespace: ${releaseNamespace}
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: dkp-capi-clusters
+  namespace: kommander-flux
+spec:
+  interval: 10m
+  timeout: 1m
+  secretRef:
+    name: tls-root-ca  
+  url: "${helmMirrorURL:=https://raw.githubusercontent.com/arbhoj/capvcd-helm/master/capi-charts}"
