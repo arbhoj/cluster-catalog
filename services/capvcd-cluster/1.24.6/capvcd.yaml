@@ -12,7 +12,7 @@ spec:
         kind: HelmRepository
         name: dkp-capi-clusters
         namespace: kommander-flux
-      version: 0.1.0 
+      version: 0.2.0 
   interval: 2m  
   install:
     remediation:
@@ -21,7 +21,6 @@ spec:
   upgrade:
     remediation:
       retries: 30
-  releaseName: capvcdclusters
   valuesFrom:
     - kind: ConfigMap
       name: capvcd-1.24.6-d2iq-defaults

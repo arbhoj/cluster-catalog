@@ -1,4 +1,3 @@
----
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -6,7 +5,12 @@ metadata:
   namespace: ${releaseNamespace}
 data:
   values.yaml: |-
-    ---      
+    ---
+    vcd:
+      site: https://192.168.140.181
+      org: d2iq
+      org_vdc: Oscorp-Workload
+      org_vdc_network: Oscorp-Workload-Network
     cluster:
       name: null
       cni: antrea
@@ -19,6 +23,7 @@ data:
       cidr:
         pod: 99.96.0.0/11
         service: 99.64.0.0/13
+      #k8s_svc_vip_range: 10.39.0.57-10.39.0.60 # Required
       isManagement: false
       http_proxy:
       https_proxy:
@@ -26,27 +31,9 @@ data:
       refresh_token_b64: null
       capv_credentials_secret: null
       encryptionConfigValueB64: a2luZDogRW5jcnlwdGlvbkNvbmZpZwphcGlWZXJzaW9uOiB2MQpyZXNvdXJjZXM6CiAgLSByZXNvdXJjZXM6CiAgICAgIC0gc2VjcmV0cwogICAgICAtIGNvbmZpZ21hcHMKICAgIHByb3ZpZGVyczoKICAgICAgLSBhZXNjYmM6CiAgICAgICAgICBrZXlzOgogICAgICAgICAgICAtIG5hbWU6IGtleQogICAgICAgICAgICAgIHNlY3JldDogYW5BU2pDYk9JMFcxT3NJbHdpS1FKWHRHT2JQR0dkWHprMGpGYkNSRjNKbz0KICAgICAgLSBpZGVudGl0eToge30=
-      controlplane:
-        vip_interface: ens160
-        vip_ip: null
-        ssh_key:
-        replicas: 3
-      workerNodes:
-        replicas: 4
-        ssh_key:
-      k8s_svc_vip_range: null
-    vcd:
-      site: https://192.168.140.181
-      org: d2iq
-      org_vdc: Oscorp-Workload
-      org_vdc_network: Oscorp-Workload-Network
-    controlPlaneMachineTemplate:
-      sizingPolicy: dkp_control_standard
-      placementPolicy: null
-      storageProfile: vSAN Default Storage Policy
-      enableNvidiaGPU: false
-    workerNodesMachineTemplate:
-      sizingPolicy: dkp_worker_standard
-      placementPolicy: null
-      storageProfile: vSAN Default Storage Policy
-      enableNvidiaGPU: false
+    controlplane:
+      vip_interface: ens160
+      #vip_ip: 10.39.0.56 # Required
+      ssh_key:
+      replicas: 3
+      poolClass: standard
